@@ -43,9 +43,11 @@ export default class TelaJogo {
     // defini tamanho dos blocos
     this.blocoWidth = this.telaWidthInterno / this.colunas;
     this.blocoHeight = this.telaHeightInterno / this.linhas;
-    console.log("1;w="+ this.telaWidthInterno+";h="+ this.telaHeightInterno);
-    console.log("2;w="+ this.blocoWidth+";h="+ this.blocoHeight);
-    console.log("3;l="+ this.linhas+";c="+ this.colunas);
+    console.log(
+      "1;w=" + this.telaWidthInterno + ";h=" + this.telaHeightInterno
+    );
+    console.log("2;w=" + this.blocoWidth + ";h=" + this.blocoHeight);
+    console.log("3;l=" + this.linhas + ";c=" + this.colunas);
     this.painelX = this.telaWidth + 10;
     this.painelY = 0;
     this.painelWidth = this.width / 3;
@@ -56,6 +58,12 @@ export default class TelaJogo {
     console.log("#2");
 
     return this;
+  }
+
+  render(gameStatus) {
+    this.limpaTela();
+    this.renderCampoJogo(gameStatus);
+    this.renderPainelLateral(gameStatus);
   }
 
   /**
@@ -80,8 +88,7 @@ export default class TelaJogo {
   /**
    * Renderiza um bloco
    */
-   renderBloco(x, y, width, height, color) {
-    
+  renderBloco(x, y, width, height, color) {
     this.context.fillStyle = color;
     this.context.strokeStyle = "black";
     this.context.lineWidth = 2;
@@ -93,11 +100,11 @@ export default class TelaJogo {
   /**
    * Renderiza o campo de jogo
    */
-  renderCampoJogo({ campoDeJogo }) { 
+  renderCampoJogo({ campoDeJogo }) {
     for (let y = 0; y < campoDeJogo.length; y++) {
       const line = campoDeJogo[y];
       for (let x = 0; x < line.length; x++) {
-        const bloco = line[x]; 
+        const bloco = line[x];
 
         if (bloco) {
           this.renderBloco(
@@ -119,5 +126,52 @@ export default class TelaJogo {
 
   limpaTela() {
     this.context.clearRect(0, 0, this.width, this.height);
+  }
+
+  /**
+   * Renderiza menssagem de fim de jogo
+   */
+  fimDeJogo({ pontuacao }) {
+    console.log("fimDeJogo")
+    this.limpaTela();
+
+    this.context.fillStyle = "white";
+    this.context.font = '18px "Press Start 2P"';
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText("GAME OVER", this.width / 2, this.height / 2 - 48);
+    this.context.fillText(`Pontuação: ${pontuacao}`, this.width / 2, this.height / 2);
+    this.context.fillText(
+      "Pressione ENTER para reiniciar",
+      this.width / 2,
+      this.height / 2 + 48
+    );
+  }
+
+  renderPausa() {
+    this.context.fillStyle = "rgba(0,0,0,0.75";
+    this.context.fillRect(0, 0, this.width, this.height);
+
+    this.context.fillStyle = "white";
+    this.context.font = '18px "Press Start 2P"';
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText(
+      "Pressione ENTER para continuar",
+      this.width / 2,
+      this.height / 2
+    );
+  }
+
+  renderTelaInicial() {
+    this.context.fillStyle = "white";
+    this.context.font = '18px "Press Start 2P"';
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillText(
+      "Precione ENTER para iniciar",
+      this.width / 2,
+      this.height / 2
+    );
   }
 }

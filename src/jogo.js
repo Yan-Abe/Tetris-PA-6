@@ -2,31 +2,16 @@ export default class Jogo {
   constructor(colunas = 10, linhas = 20) {
     this.nColunas = colunas;
     this.nLinhas = linhas;
+    this.reinicia();
+  }
 
+  reinicia() {
     this.pontuacao = 0;
     this.linhas = 0;
     this.nivel = 0;
     this.campoDeJogo = this.criarCampoDeJogo();
     this.pecaAtual = this.criarPeca();
-  }
-
-  /**
-   * Cria uma nova peça
-   * @returns {}
-   */
-  criarPeca() {
-    // TODO adicionar mais peças
-    const peca = {};
-    peca.blocos = [
-      [0, 0, 0, 0],
-      [1, 1, 1, 1],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-    ];
-    peca.x = 4;
-    peca.y = -1;
-
-    return peca;
+    this.fimDeJogo = false;
   }
 
   /**
@@ -69,6 +54,7 @@ export default class Jogo {
       linhas: this.linhas,
       proximaPeca: this.proximaPeca,
       campoDeJogo,
+      fimDeJogo: this.fimDeJogo,
     };
   }
 
@@ -76,11 +62,12 @@ export default class Jogo {
    * Move a peça atual para baixo
    **/
   movePecaParaBaixo() {
+    if (this.fimDeJogo) return;
+
     // incrementa a posição no ixo Y
     this.pecaAtual.y += 1;
 
     if (this.temColizao()) {
-      console.log("colizao");
       // reverte
       this.pecaAtual.y -= 1;
       this.bloqueiaPeca();
@@ -200,7 +187,6 @@ export default class Jogo {
    * remove as linhas completas
    */
   removeLinhas() {
-    console.log("* removeLinhas...");
     let linhas = [];
     // para cada linha no tabuleiro
     for (let y = this.nLinhas - 1; y >= 0; y--) {
@@ -211,7 +197,7 @@ export default class Jogo {
           numeroDeBlocos += 1;
         }
       }
-      console.log("numeroDeBlocos:" + numeroDeBlocos);
+
       // se fazio
       if (numeroDeBlocos === 0) {
         break;
@@ -226,8 +212,6 @@ export default class Jogo {
       }
     }
 
-    console.log("----");
-    console.log(linhas);
     for (let index of linhas) {
       // remove linha
       this.campoDeJogo.splice(index, 1);
@@ -252,5 +236,70 @@ export default class Jogo {
       this.nivel = Math.floor(this.linhas * 0.1);
       console.log(this.pontuacao, this.linhas, this.nivel);
     }
+  }
+
+  /**
+   * Cria uma nova peça
+   * @returns {}
+   */
+  criarPeca() {
+    const peca = {};
+    const index = Math.floor(Math.random() * 7);
+    switch (index) {
+      case 0:
+        peca.blocos = [
+          [0, 0, 0, 0],
+          [1, 1, 1, 1],
+          [0, 0, 0, 0],
+          [0, 0, 0, 0],
+        ];
+        break;
+        case1: peca.blocos = [
+          [0, 0, 0],
+          [2, 2, 2],
+          [0, 0, 2],
+        ];
+        break;
+      case 2:
+        peca.blocos = [
+          [0, 0, 0],
+          [3, 3, 3],
+          [3, 0, 0],
+        ];
+        break;
+      case 3:
+        peca.blocos = [
+          [0, 0, 0, 0],
+          [0, 4, 4, 0],
+          [0, 4, 4, 0],
+          [0, 0, 0, 0],
+        ];
+        break;
+      case 4:
+        peca.blocos = [
+          [0, 0, 0],
+          [0, 5, 5],
+          [5, 5, 0],
+        ];
+        break;
+      case 5:
+        peca.blocos = [
+          [0, 0, 0],
+          [6, 6, 6],
+          [0, 6, 0],
+        ];
+        break;
+      default:
+        peca.blocos = [
+          [0, 0, 0],
+          [7, 7, 0],
+          [0, 7, 7],
+        ];
+        break;
+    }
+    peca.x = 4;
+    peca.y = -1;
+
+    return peca;
   }
 }
