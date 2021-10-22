@@ -5,7 +5,7 @@ const telaJogo = new TelaJogo(document.getElementById("app"), 480, 640);
 const jogo = new Jogo();
 
 const reder = (gameStatus) => {
-  console.log(gameStatus)
+  telaJogo.limpaTela();
   telaJogo.renderCampoJogo(gameStatus);
   telaJogo.renderPainelLateral(gameStatus);
 };
@@ -18,18 +18,18 @@ const atualizaTela = () => {
 //
 atualizaTela();
 
-
-
 /**
  * Handler para captura de cliques do teclado.
  */
 const handleKeyDown = (event) => {
+  const state = jogo.getStatus();
   switch (event.keyCode) {
     case 37: //Seta esquerda
       jogo.movePecaParaEsquerda();
 
       break;
     case 38: // Seta para cima
+      jogo.rotacionaPeca();
       break;
     case 39: // Seta para direita
       jogo.movePecaParaDireita();
@@ -44,5 +44,3 @@ const handleKeyDown = (event) => {
 
 // Coloca o hadler para escutar os evendo de keyDow
 document.addEventListener("keydown", handleKeyDown);
-
-
