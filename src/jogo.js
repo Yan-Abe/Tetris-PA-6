@@ -1,8 +1,8 @@
 export default class Jogo {
-
   constructor() {
     this.pontuacao = 0;
     this.linhas = 0;
+    this.nivel = 1;
     this.campoDeJogo = this.criarCampoDeJogo();
     this.pecaAtual = this.criarPeca();
   }
@@ -63,9 +63,32 @@ export default class Jogo {
     return {
       pontuacao: this.pontuacao,
       nivel: this.nivel,
-      linhas: this.lines,
+      linhas: this.linhas,
       proximaPeca: this.proximaPeca,
-      campoDeJogo
+      campoDeJogo,
     };
+  }
+
+  /**
+   * Move a peça atual para baixo
+   **/
+  movePecaParaBaixo() {
+    // incrementa a posição no ixo Y
+    this.pecaAtual.y += 1;
+  }
+  /**
+   * Move a peça atual para Esquerda
+   **/
+  movePecaParaEsquerda() {
+    // Decrementa a posição no ixo X
+    this.pecaAtual.x -= 1;
+  }
+
+  /**
+   * Move a peça atual para Direita
+   **/
+  movePecaParaDireita() {
+    // Incrementa a posição no ixo X
+    this.pecaAtual.x += 1;
   }
 }
