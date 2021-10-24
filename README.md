@@ -11,15 +11,24 @@ Tecnologies:
 - HTML
 - Index.html
 
+The game is running via Index.html from the code itself. The commits were centralized in a member for greater code organization.
 
-Se usou nesse projeto modulos do JavaScript. Para testar sirva os arquivos com um servidor (Ex: apche ou Nginx )   
-ou rode o micro servidor que acompanha o prjeto:
-```
-$ yar 
-$ node server.js
-```
-e acesse "http://localhost:8080/"
+Instruções: 
+Utilizar "enter" para iniciar o jogo.
+Seta para cima - Muda posição da peça
+Setas direita e esquera - Movimentam a peça 
+Seta para baixo - Acelera a peça.
 
+Instruções de compilação: 
+Após abrir o código, no momento da compilação o index abre o jogo com um link próprio para quem está compilando.
 
+Link do código:https://github.com/Yan-Abe/Tetris-PA-6
 
+Integrantes do grupo:
 
+Derik Caceres - 190695
+Enrico Contó - 190793
+Yan Abe Rosa - 190111
+Kaetano César Apolinario Rodrigues - 190157
+Gustavo de Freitas - 190511
+Gabriella Cristina de Paula - 190036
