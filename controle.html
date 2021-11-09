@@ -18,12 +18,7 @@
         margin: 0 auto;
     }
 
-    .center {
-        margin: auto;
-        width: 50%;
-        border: 3px solid green;
-        padding: 10px;
-        }
+
 </style>
 </head>
 <body>
@@ -31,13 +26,21 @@
         <h1>
            Tetris
         </h1>
-        <div class="center">
-            <a href="/game"><h2>Jogo</h2></a>
-            <br>
-            <a href="/controle"><h2>Controle</h2></a>
-        </div>
+        
     </div>
-     
-    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var h2 = document.getElementById('sockte_id');
+       
+        
+        socket.on('connect', function () {
+            h2.innerHTML ="ID: "+socket.io.engine.id;
+            console.log(socket.io.engine.id);
+        });
+
+
+    </script>
 </body>
 </html>

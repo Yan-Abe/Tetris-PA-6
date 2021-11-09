@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<head>
+<style>
+    body {
+        margin: 0;
+        background-color: black;
+    }
+
+    #app h1 {
+        color: white;
+    }
+    #app h2 {
+        color: white;
+    }
+
+    #app canvas {
+        display: block;
+        margin: 0 auto;
+    }
+
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <h1>
+           Tetris
+        </h1>
+        <h2 id="sockte_id"></h2>>
+    </div>
+     
+    <script type="module" src="/static/index.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var h2 = document.getElementById('sockte_id');
+       
+        
+        socket.on('connect', function () {
+            h2.innerHTML ="ID: "+socket.io.engine.id;
+            console.log(socket.io.engine.id);
+        });
+
+
+    </script>
+</body>
+</html>
