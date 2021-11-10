@@ -11,16 +11,15 @@ Tecnologies:
 - HTML
 - Index.html
 
-The game is running via Index.html from the code itself. The commits were centralized in a member for greater code organization.
+The game is allocated in http://localhost:3000. The commits were centralized in a member for greater code organization.
 
 Instruções: 
+Inicializar o codigo
+Em seguida utilizar http://localhost:3000
 Utilizar "enter" para iniciar o jogo.
 Seta para cima - Muda posição da peça
 Setas direita e esquera - Movimentam a peça 
 Seta para baixo - Acelera a peça.
-
-Instruções de compilação: 
-Após abrir o código, no momento da compilação o index abre o jogo com um link próprio para quem está compilando.
 
 Link do código:https://github.com/Yan-Abe/Tetris-PA-6
 
