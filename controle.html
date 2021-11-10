@@ -12,6 +12,9 @@
     #app h2 {
         color: white;
     }
+    label {
+        color: white;
+    }
 
     #app canvas {
         display: block;
@@ -20,6 +23,8 @@
 
 
 </style>
+<link rel="stylesheet" href="/static/css/teclado.css">
+
 </head>
 <body>
     <div id="app">
@@ -27,20 +32,40 @@
            Tetris
         </h1>
         
-    </div>
+    
 
+    <form action="/action_page.php">
+        <label for="id_tela">ID:</label>
+        <input type="text" id="id_tela" name="id_tela"><br><br> 
+      </form>
+      
+      
+    <div class="keys">
+        <button onclick="arrUp()" class="up arr"><i class="fa fa-arrow-up"></i></button>
+        <br />
+        <button onclick="arrLeft()" class="left arr"><i class="fa fa-arrow-left"></i></button>  
+        <button onclick="arrDow()" class="down arr"><i class="fa fa-arrow-down"></i></button>
+        <button onclick="arrRigt()" class="right arr"><i class="fa fa-arrow-right"></i></button>
+        <br />
+        <button onclick="actionEnter()" class=" arr2">Enter</button>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+   
+      
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+ 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/telaControleRemoto.js"></script>
     <script>
-        var socket = io();
-        var h2 = document.getElementById('sockte_id');
-       
         
-        socket.on('connect', function () {
-            h2.innerHTML ="ID: "+socket.io.engine.id;
-            console.log(socket.io.engine.id);
-        });
-
+        
 
     </script>
+
+    </div>
 </body>
 </html>

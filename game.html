@@ -29,19 +29,11 @@
         <h2 id="sockte_id"></h2>>
     </div>
      
+    <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="/static/index.js"></script>
 
-    <script src="/socket.io/socket.io.js"></script>
     <script>
-        var socket = io();
-        var h2 = document.getElementById('sockte_id');
-       
-        
-        socket.on('connect', function () {
-            h2.innerHTML ="ID: "+socket.io.engine.id;
-            console.log(socket.io.engine.id);
-        });
-
+      
 
     </script>
 </body>
