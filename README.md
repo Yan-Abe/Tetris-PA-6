@@ -16,6 +16,8 @@ The game is allocated in http://localhost:3000. The commits were centralized in 
 Instruções: 
 Inicializar o codigo
 Em seguida utilizar http://localhost:3000
+Dar "NPM Install"
+Depois "Node server.js"
 Utilizar "enter" para iniciar o jogo.
 Seta para cima - Muda posição da peça
 Setas direita e esquera - Movimentam a peça 
