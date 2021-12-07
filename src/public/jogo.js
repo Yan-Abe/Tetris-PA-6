@@ -254,7 +254,7 @@ export default class Jogo {
             [0, 0, 0, 0],
           ];
           break;
-          case1: peca.blocos = [
+          case 1: peca.blocos = [
             [0, 0, 0],
             [2, 2, 2],
             [0, 0, 2],
